@@ -1,5 +1,6 @@
 import 'controller/MasterController.dart';
 
 void main() {
-  MasterController.run();
+  MasterController mc = new MasterController();
+  mc.run();
 }

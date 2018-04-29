@@ -1,11 +1,13 @@
-import '../model/Table.dart';
+import '../model/TableModel.dart';
 import '../view/MainView.dart';
 
-abstract class MasterController {
-  static Table _table = new Table();
-  static MainView _mainView = new MainView();
-
-  static void run() { 
-    
+class MasterController {
+  TableModel _tableModel;
+  MainView _mainView;
+  
+  void run() {
+  	_tableModel = new TableModel(16, 16, "000000");
+  	_mainView = new MainView(_tableModel);
+  	_mainView.generateTable();
   } 
 }
