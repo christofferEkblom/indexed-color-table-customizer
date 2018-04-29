@@ -1,5 +1,5 @@
-import 'dart:html';
+import 'controller/MasterController.dart';
 
 void main() {
-  querySelector('#test').text = 'Hello world!';
+  MasterController.run();
 }
