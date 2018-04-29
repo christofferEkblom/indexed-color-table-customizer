@@ -4,3 +4,4 @@
 .sass-cache
 node_modules
 !webpack.config.js
+!reset.min.css
