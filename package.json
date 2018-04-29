@@ -1,0 +1,22 @@
+{
+  "name": "indexed-color-table-customizer",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "launcher": "./compile.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/christofferEkblom/indexed-color-table-customizer.git"
+  },
+  "author": "Christoffer Ekblom",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/christofferEkblom/indexed-color-table-customizer/issues"
+  },
+  "homepage": "https://github.com/christofferEkblom/indexed-color-table-customizer#readme",
+  "dependencies": {
+    "dart-loader": "0.0.1",
+    "webpack": "^2.2.1"
+  }
+}
