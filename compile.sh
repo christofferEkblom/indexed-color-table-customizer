@@ -1,2 +1,2 @@
 #!/bin/bash
-webpack --progress --watch
+webpack --progress --watch --optimize-minimize
