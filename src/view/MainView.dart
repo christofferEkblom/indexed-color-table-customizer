@@ -2,21 +2,19 @@ import 'dart:html';
 import '../model/TableModel.dart';
 
 class MainView {
-  TableModel _tableModel;
   TableElement _table;
 
-  MainView(TableModel tableModel) {
-    _tableModel = tableModel;
-    _table = new TableElement();
+  MainView() {
+    
   }
 
   void generateTable() {
-    for(int row = 0; row < _tableModel.rows; row++) {
+    for(int row = 0; row < TableModel.ROWS; row++) {
       TableRowElement tableRow = new TableRowElement();
 
-      for(int col = 0; col < _tableModel.cols; col++) {
+      for(int col = 0; col < TableModel.COLS; col++) {
         TableCellElement tableCell = tableRow.addCell();
-        tableCell.appendText(_tableModel.initialColor);
+        tableCell.appendText(TableModel.DEFAULT_FILL_VALUE);
         tableRow.append(tableCell);
       }
       

@@ -1,15 +1,5 @@
-class TableModel {
-  int _cols;
-  int _rows;
-  String _initialColor;
-
-  int get cols => _cols;
-  int get rows => _rows;
-  String get initialColor => _initialColor;
-
-  TableModel(int cols, int rows, String initialColor) {
-    _cols = cols;
-    _rows = rows;
-    _initialColor = initialColor;
-  }
+abstract class TableModel {
+  static const String DEFAULT_FILL_VALUE = "000000";
+  static const int COLS = 16;
+  static const int ROWS = 16;
 }
