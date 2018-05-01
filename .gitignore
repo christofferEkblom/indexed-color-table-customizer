@@ -4,7 +4,7 @@
 .sass-cache
 node_modules
 !webpack.config.js
-!jscolor.js
+!jscolor.min.js
 !reset.css
 !reset.min.css
 SCRATCH PAPER
