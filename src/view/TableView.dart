@@ -7,7 +7,6 @@ class TableView implements View {
 
   TableView() {
     _table = new TableElement();
-    _table.id = 'table';
   }
 
   void generate() {
@@ -17,7 +16,12 @@ class TableView implements View {
       for(int col = 0; col < TableModel.COLS; col++) {
         TableCellElement tableCell = tableRow.addCell();
         InputElement input = new InputElement();
-        input.className = "jscolor";
+        input.classes.add('jscolor');
+
+        if(row != 0 || col != 0) {
+          input.classes.add('invisible');
+        }
+
         input.value = TableModel.DEFAULT_FILL_VALUE;
         tableCell.append(input);
         tableRow.append(tableCell);
