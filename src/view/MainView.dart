@@ -5,7 +5,7 @@ class MainView {
   TableElement _table;
 
   MainView() {
-    
+    _table = new TableElement();
   }
 
   void generateTable() {
