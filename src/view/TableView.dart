@@ -10,13 +10,14 @@ class TableView implements View {
   }
 
   void generate() {
-    for(int row = 0; row < TableModel.ROWS; row++) {
+    for(int row = 0, id = 1; row < TableModel.ROWS; row++) {
       TableRowElement tableRow = new TableRowElement();
 
-      for(int col = 0; col < TableModel.COLS; col++) {
+      for(int col = 0; col < TableModel.COLS; col++, id++) {
         TableCellElement tableCell = tableRow.addCell();
         InputElement input = new InputElement();
         input.classes.add('jscolor');
+        input.id = 'color-control-' + id.toString();
 
         if(row != 0 || col != 0) {
           input.classes.add('invisible');
@@ -31,5 +32,15 @@ class TableView implements View {
     }
 
     document.body.children.add(_table);
+  }
+
+  void showColorControl(int elementNumber) {
+    InputElement colorControl = querySelector('#color-control-' + elementNumber.toString());
+    colorControl.classes.remove('invisible');
+  }
+
+  void hideColorControl(int elementNumber) {
+    InputElement colorControl = querySelector('#color-control-' + (elementNumber + 1).toString());
+    colorControl.classes.add('invisible');
   }
 }
