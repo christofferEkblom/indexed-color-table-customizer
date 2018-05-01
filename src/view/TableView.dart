@@ -1,14 +1,14 @@
 import 'dart:html';
 import '../model/TableModel.dart';
 
-class MainView {
+class TableView {
   TableElement _table;
 
-  MainView() {
+  TableView() {
     _table = new TableElement();
   }
 
-  void generateTable() {
+  void generate() {
     for(int row = 0; row < TableModel.ROWS; row++) {
       TableRowElement tableRow = new TableRowElement();
 

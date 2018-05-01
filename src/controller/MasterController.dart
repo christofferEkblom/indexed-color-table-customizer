@@ -1,10 +1,10 @@
-import '../view/MainView.dart';
+import '../view/TableView.dart';
 
 class MasterController {
-  MainView _mainView;
+  TableView _tableView;
   
   void run() {
-  	_mainView = new MainView();
-  	_mainView.generateTable();
+  	_tableView = new TableView();
+  	_tableView.generate();
   } 
 }
