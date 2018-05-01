@@ -22,6 +22,7 @@ class MasterController {
   void _handleToolPanelEvents() {
     _toolPanelView.plusButton.onClick.listen(_plusButtonIsClicked);
     _toolPanelView.minusButton.onClick.listen(_minusButtonIsClicked);
+    _toolPanelView.downloadButton.onClick.listen(_downloadButtonIsClicked);
   }
 
   void _plusButtonIsClicked(MouseEvent e) {
@@ -32,5 +33,9 @@ class MasterController {
   void _minusButtonIsClicked(MouseEvent e) {
     TableModel.decreaseCursor();
     _tableView.hideColorControl(TableModel.cursor);
+  }
+
+  void _downloadButtonIsClicked(MouseEvent e) {
+    TableModel.createBinaryFile(_tableView.toStringList());
   }
 }

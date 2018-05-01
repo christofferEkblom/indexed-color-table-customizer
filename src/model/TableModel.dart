@@ -18,4 +18,8 @@ abstract class TableModel {
       --_cursor;
     }
   }
+
+  static void createBinaryFile(List<String> data) {
+    throw UnimplementedError;
+  }
 }

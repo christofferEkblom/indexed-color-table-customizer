@@ -43,4 +43,13 @@ class TableView implements View {
     InputElement colorControl = querySelector('#color-control-' + (elementNumber + 1).toString());
     colorControl.classes.remove('visible');
   }
+
+  List<String> toStringList() {
+    List<String> data = new List<String>();
+    ElementList visibleControls = querySelectorAll('.visible');
+
+    visibleControls.forEach((element) => data.add(element.value));
+
+    return data;
+  }
 }
