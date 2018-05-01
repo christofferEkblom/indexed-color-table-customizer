@@ -1,7 +1,8 @@
 import 'dart:html';
+import 'View.dart';
 import '../model/TableModel.dart';
 
-class TableView {
+class TableView implements View {
   TableElement _table;
 
   TableView() {
