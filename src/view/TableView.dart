@@ -16,7 +16,10 @@ class TableView implements View {
 
       for(int col = 0; col < TableModel.COLS; col++) {
         TableCellElement tableCell = tableRow.addCell();
-        tableCell.appendText(TableModel.DEFAULT_FILL_VALUE);
+        InputElement input = new InputElement();
+        input.className = "jscolor";
+        input.value = TableModel.DEFAULT_FILL_VALUE;
+        tableCell.append(input);
         tableRow.append(tableCell);
       }
       
