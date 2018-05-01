@@ -9,8 +9,8 @@ class MasterController {
   void run() {
   	_tableView = new TableView();
   	_toolPanelView = new ToolPanelView();
-
-  	_tableView.generate();
+  	
   	_toolPanelView.generate();
+  	_tableView.generate();
   } 
 }
