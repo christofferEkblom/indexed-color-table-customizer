@@ -17,8 +17,8 @@ class ToolPanelView implements View {
   }
 
   void generate() {
-  	_toolPanel.append(_generatePlusButton());
-  	_toolPanel.append(_generateMinusButton());
+    _toolPanel.append(_generatePlusButton());
+    _toolPanel.append(_generateMinusButton());
     document.body.children.add(_toolPanel);
   }
 
