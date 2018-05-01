@@ -19,8 +19,8 @@ class TableView implements View {
         input.classes.add('jscolor');
         input.id = 'color-control-' + id.toString();
 
-        if(row != 0 || col != 0) {
-          input.classes.add('invisible');
+        if(row == 0 && col == 0) {
+          input.classes.add('visible');
         }
 
         input.value = TableModel.DEFAULT_FILL_VALUE;
@@ -36,11 +36,11 @@ class TableView implements View {
 
   void showColorControl(int elementNumber) {
     InputElement colorControl = querySelector('#color-control-' + elementNumber.toString());
-    colorControl.classes.remove('invisible');
+    colorControl.classes.add('visible');
   }
 
   void hideColorControl(int elementNumber) {
     InputElement colorControl = querySelector('#color-control-' + (elementNumber + 1).toString());
-    colorControl.classes.add('invisible');
+    colorControl.classes.remove('visible');
   }
 }
