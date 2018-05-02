@@ -1,6 +1,6 @@
 import 'dart:html';
 import 'View.dart';
-import '../model/ColorTable.dart';
+import '../model/TableDataHandler.dart';
 
 class TableView implements View {
   TableElement _table;
@@ -10,10 +10,10 @@ class TableView implements View {
   }
 
   void generate() {
-    for(int row = 0, id = 1; row < ColorTable.ROWS; row++) {
+    for(int row = 0, id = 1; row < TableDataHandler.ROWS; row++) {
       TableRowElement tableRow = new TableRowElement();
 
-      for(int col = 0; col < ColorTable.COLS; col++, id++) {
+      for(int col = 0; col < TableDataHandler.COLS; col++, id++) {
         TableCellElement tableCell = tableRow.addCell();
         InputElement input = new InputElement();
         input.classes.add('jscolor');
@@ -23,7 +23,7 @@ class TableView implements View {
           input.classes.add('visible');
         }
 
-        input.value = ColorTable.DEFAULT_FILL_VALUE;
+        input.value = TableDataHandler.DEFAULT_FILL_VALUE;
         tableCell.append(input);
         tableRow.append(tableCell);
       }

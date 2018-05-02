@@ -1,6 +1,6 @@
 import 'dart:typed_data';
 
-class ColorTable {
+class TableDataHandler {
   static const String DEFAULT_FILL_VALUE = "000000";
   static const int COLS = 16;
   static const int ROWS = 16;
@@ -15,7 +15,7 @@ class ColorTable {
   List<String> _data;
   int get cursor => _cursor;
 
-  ColorTable() {
+  TableDataHandler() {
     _arrayBuffer = new Uint8List(_FILE_SIZE_IN_BYTES);
   }
 

@@ -1,11 +1,11 @@
 import 'dart:html';
-import '../model/ColorTable.dart';
+import '../model/TableDataHandler.dart';
 import '../model/BinaryFileCreator.dart';
 import '../view/TableView.dart';
 import '../view/ToolPanelView.dart';
 
 class MasterController {
-  ColorTable _colorTable;
+  TableDataHandler _tableDataHandler;
   BinaryFileCreator _binaryFileCreator;
   TableView _tableView;
   ToolPanelView _toolPanelView;
@@ -13,7 +13,7 @@ class MasterController {
   MasterController() {
     _tableView = new TableView();
     _toolPanelView = new ToolPanelView();
-    _colorTable = new ColorTable();
+    _tableDataHandler = new TableDataHandler();
     _binaryFileCreator = new BinaryFileCreator();
   }
   
@@ -31,17 +31,17 @@ class MasterController {
   }
 
   void _plusButtonIsClicked(MouseEvent e) {
-    _colorTable.increaseCursor();
-    _tableView.showColorControl(_colorTable.cursor);
+    _tableDataHandler.increaseCursor();
+    _tableView.showColorControl(_tableDataHandler.cursor);
   }
 
   void _minusButtonIsClicked(MouseEvent e) {
-    _colorTable.decreaseCursor();
-    _tableView.hideColorControl(_colorTable.cursor);
+    _tableDataHandler.decreaseCursor();
+    _tableView.hideColorControl(_tableDataHandler.cursor);
   }
 
   void _downloadButtonIsClicked(MouseEvent e) {
-    var bytes = _colorTable.getBytes(_tableView.toStringList());
+    var bytes = _tableDataHandler.getBytes(_tableView.toStringList());
     _binaryFileCreator.downloadFile(bytes);
   }
 }
