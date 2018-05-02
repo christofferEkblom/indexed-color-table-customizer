@@ -7,6 +7,7 @@ abstract class TableModel {
   static const int ROWS = 16;
 
   static const int _COLOR_CHANNELS = 3;
+  static const int _FILE_SIZE_IN_BYTES = 768;
   static const int _COLOR_CHANNEL_SIZE = 2;
   static const int _HEX_BASE = 16;
 
@@ -27,7 +28,7 @@ abstract class TableModel {
   }
 
   static void createBinaryFile(List<String> data) {
-    Uint8List arrayBuffer = new Uint8List(COLS * ROWS * _COLOR_CHANNELS);
+    Uint8List arrayBuffer = new Uint8List(_FILE_SIZE_IN_BYTES);
 
     List<List<int>> bytes = _hexArrayToBytes(data);
     int pos = 0;
@@ -37,6 +38,11 @@ abstract class TableModel {
         arrayBuffer[pos++] = bytes[i][j];
       }
     }
+
+    while(pos < _FILE_SIZE_IN_BYTES) {
+      arrayBuffer[pos++] = arrayBuffer[0];
+      arrayBuffer[pos++] = arrayBuffer[1];
+      arrayBuffer[pos++] = arrayBuffer[2];
 
     Blob blob = new Blob([arrayBuffer]);
     String url = Url.createObjectUrlFromBlob(blob);
@@ -67,5 +73,4 @@ abstract class TableModel {
 
     return bytes;
   }
-
 }
