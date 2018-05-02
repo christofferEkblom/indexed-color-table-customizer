@@ -43,7 +43,8 @@ abstract class TableModel {
       arrayBuffer[pos++] = arrayBuffer[0];
       arrayBuffer[pos++] = arrayBuffer[1];
       arrayBuffer[pos++] = arrayBuffer[2];
-
+    }
+    
     Blob blob = new Blob([arrayBuffer]);
     String url = Url.createObjectUrlFromBlob(blob);
     AnchorElement link = new AnchorElement();
