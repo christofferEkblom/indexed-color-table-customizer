@@ -28,6 +28,7 @@ class MasterController {
     _toolPanelView.plusButton.onClick.listen(_plusButtonIsClicked);
     _toolPanelView.minusButton.onClick.listen(_minusButtonIsClicked);
     _toolPanelView.downloadButton.onClick.listen(_downloadButtonIsClicked);
+    _toolPanelView.uploadButton.onChange.listen(_uploadButtonIsClicked);
   }
 
   void _plusButtonIsClicked(MouseEvent e) {
@@ -43,5 +44,9 @@ class MasterController {
   void _downloadButtonIsClicked(MouseEvent e) {
     var bytes = _tableDataHandler.getBytes(_tableView.toStringList());
     _binaryFileCreator.downloadFile(bytes);
+  }
+
+  void _uploadButtonIsClicked(MouseEvent e) {
+    _binaryFileCreator.uploadFile(_toolPanelView.uploadButton);
   }
 }

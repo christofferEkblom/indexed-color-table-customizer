@@ -6,7 +6,7 @@ class TableDataHandler {
   static const int ROWS = 16;
 
   static const int _COLOR_CHANNELS = 3;
-  static const int _FILE_SIZE_IN_BYTES = 768;
+  static const int FILE_SIZE_IN_BYTES = 768;
   static const int _COLOR_CHANNEL_SIZE = 2;
   static const int _HEX_BASE = 16;
 
@@ -16,7 +16,7 @@ class TableDataHandler {
   int get cursor => _cursor;
 
   TableDataHandler() {
-    _arrayBuffer = new Uint8List(_FILE_SIZE_IN_BYTES);
+    _arrayBuffer = new Uint8List(FILE_SIZE_IN_BYTES);
   }
 
   void increaseCursor() {
@@ -78,7 +78,7 @@ class TableDataHandler {
   void _replaceNullBytes() {
     int pos = _cursor * _COLOR_CHANNELS;
 
-    while(pos < _FILE_SIZE_IN_BYTES) {
+    while(pos < FILE_SIZE_IN_BYTES) {
       _arrayBuffer[pos++] = _arrayBuffer[0];
       _arrayBuffer[pos++] = _arrayBuffer[1];
       _arrayBuffer[pos++] = _arrayBuffer[2];
