@@ -29,12 +29,12 @@ class MasterController {
 
   void _plusButtonIsClicked(MouseEvent e) {
     _tableModel.increaseCursor();
-    _tableView.showColorControl(TableModel.cursor);
+    _tableView.showColorControl(_tableModel.cursor);
   }
 
   void _minusButtonIsClicked(MouseEvent e) {
     _tableModel.decreaseCursor();
-    _tableView.hideColorControl(TableModel.cursor);
+    _tableView.hideColorControl(_tableModel.cursor);
   }
 
   void _downloadButtonIsClicked(MouseEvent e) {

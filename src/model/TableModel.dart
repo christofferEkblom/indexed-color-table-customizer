@@ -11,9 +11,9 @@ class TableModel {
   static const int _COLOR_CHANNEL_SIZE = 2;
   static const int _HEX_BASE = 16;
 
-  static int _cursor = 1;
+  int _cursor = 1;
 
-  static int get cursor => _cursor;
+  int get cursor => _cursor;
 
   void increaseCursor() {
     if(cursor < COLS * ROWS) {
