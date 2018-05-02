@@ -1,7 +1,7 @@
 import 'dart:typed_data';
 import 'dart:html';
 
-abstract class TableModel {
+class TableModel {
   static const String DEFAULT_FILL_VALUE = "000000";
   static const int COLS = 16;
   static const int ROWS = 16;
@@ -15,19 +15,19 @@ abstract class TableModel {
 
   static int get cursor => _cursor;
 
-  static void increaseCursor() {
+  void increaseCursor() {
     if(cursor < COLS * ROWS) {
       ++_cursor;
     }
   }
 
-  static void decreaseCursor() {
+  void decreaseCursor() {
     if(cursor > 1) {
       --_cursor;
     }
   }
 
-  static void createBinaryFile(List<String> data) {
+  void createBinaryFile(List<String> data) {
     Uint8List arrayBuffer = new Uint8List(_FILE_SIZE_IN_BYTES);
 
     List<List<int>> bytes = _hexArrayToBytes(data);
@@ -53,7 +53,7 @@ abstract class TableModel {
     link.click();
   }
 
-  static List<int> _hexStringToBytes(hex) {
+  List<int> _hexStringToBytes(hex) {
     List<int> bytes = new List<int>();
     String colorChannel;
 
@@ -65,7 +65,7 @@ abstract class TableModel {
     return bytes;
   }
 
-  static List<List<int>> _hexArrayToBytes(List<String> hexArray) {
+  List<List<int>> _hexArrayToBytes(List<String> hexArray) {
     List<List<int>> bytes = new List<List<int>>();
 
     for(int i = 0; i < hexArray.length; i++) {
