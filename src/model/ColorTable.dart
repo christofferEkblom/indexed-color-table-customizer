@@ -1,7 +1,6 @@
 import 'dart:typed_data';
-import 'dart:html';
 
-class TableModel {
+class ColorTable {
   static const String DEFAULT_FILL_VALUE = "000000";
   static const int COLS = 16;
   static const int ROWS = 16;
@@ -12,8 +11,13 @@ class TableModel {
   static const int _HEX_BASE = 16;
 
   int _cursor = 1;
-
+  Uint8List _arrayBuffer;
+  List<String> _data;
   int get cursor => _cursor;
+
+  ColorTable() {
+    _arrayBuffer = new Uint8List(_FILE_SIZE_IN_BYTES);
+  }
 
   void increaseCursor() {
     if(cursor < COLS * ROWS) {
@@ -27,38 +31,23 @@ class TableModel {
     }
   }
 
-  void createBinaryFile(List<String> data) {
-    Uint8List arrayBuffer = new Uint8List(_FILE_SIZE_IN_BYTES);
-
-    List<List<int>> bytes = _hexArrayToBytes(data);
-    int pos = 0;
-
-    for(int i = 0; i < bytes.length; i++) {
-      for(int j = 0; j < 3; j++) {
-        arrayBuffer[pos++] = bytes[i][j];
-      }
-    }
-
-    while(pos < _FILE_SIZE_IN_BYTES) {
-      arrayBuffer[pos++] = arrayBuffer[0];
-      arrayBuffer[pos++] = arrayBuffer[1];
-      arrayBuffer[pos++] = arrayBuffer[2];
-    }
-    
-    Blob blob = new Blob([arrayBuffer]);
-    String url = Url.createObjectUrlFromBlob(blob);
-    AnchorElement link = new AnchorElement();
-    link.href = url;
-    link.download = "filename.ext";
-    link.click();
+  Uint8List getBytes(List<String> data) {
+    _data = data;
+    _fillBytes();
+    _replaceNullBytes();
+    return _arrayBuffer;
   }
 
   List<int> _hexStringToBytes(hex) {
     List<int> bytes = new List<int>();
     String colorChannel;
+    int start;
+    int end;
 
     for(int i = 0; i < _COLOR_CHANNELS; i++) {
-      colorChannel = hex.substring(i * _COLOR_CHANNEL_SIZE, i * _COLOR_CHANNEL_SIZE + _COLOR_CHANNEL_SIZE);
+      start = i * _COLOR_CHANNEL_SIZE;
+      end = i * _COLOR_CHANNEL_SIZE + _COLOR_CHANNEL_SIZE;
+      colorChannel = hex.substring(start, end);
       bytes.add(int.parse(colorChannel, radix: _HEX_BASE));
     }
 
@@ -73,5 +62,26 @@ class TableModel {
     }
 
     return bytes;
+  }
+
+  void _fillBytes() {
+    List<List<int>> bytes = _hexArrayToBytes(_data);
+    int pos = 0;
+
+    for(int i = 0; i < bytes.length; i++) {
+      for(int j = 0; j < 3; j++) {
+        _arrayBuffer[pos++] = bytes[i][j];
+      }
+    }
+  }
+
+  void _replaceNullBytes() {
+    int pos = _cursor * _COLOR_CHANNELS;
+
+    while(pos < _FILE_SIZE_IN_BYTES) {
+      _arrayBuffer[pos++] = _arrayBuffer[0];
+      _arrayBuffer[pos++] = _arrayBuffer[1];
+      _arrayBuffer[pos++] = _arrayBuffer[2];
+    }
   }
 }
