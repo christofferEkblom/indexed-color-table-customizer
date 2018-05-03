@@ -1,7 +1,12 @@
 #indexed-color-table-customizer table .jscolor {
-  visibility: hidden;
+  opacity: 0.1;
+  filter: blur(1px);
+  z-index: -1;
+  pointer-events: none;
 }
 
 #indexed-color-table-customizer table .jscolor.visible {
-  visibility: visible;
+  opacity: 1;
+  filter: blur(0);
+  pointer-events: initial;
 }

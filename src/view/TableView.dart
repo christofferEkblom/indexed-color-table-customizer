@@ -39,7 +39,6 @@ class TableView implements View {
 
     for(int i = 0; i < allColorControls.length; i++) {
       allColorControls[i].value = colors[i];
-      allColorControls[i].classes.remove('visible');
       allColorControls[i].classes.add('visible');
       allColorControls[i].select();
     }
