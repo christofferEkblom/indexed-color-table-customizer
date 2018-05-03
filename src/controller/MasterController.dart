@@ -53,6 +53,7 @@ class MasterController {
     reader.onLoad.first.then((_) {
       bytes = reader.result;
       _tableView.loadTable(_tableDataHandler.bytesToHexList(bytes));
+      _tableDataHandler.setCursorAtTheEnd();
     });
 
     reader.onError.first.then((error) {
