@@ -41,8 +41,9 @@ class TableView implements View {
       allColorControls[i].value = colors[i];
       allColorControls[i].classes.add('visible');
       allColorControls[i].select();
-      allColorControls[i].blur();
     }
+
+    allColorControls[allColorControls.length - 1].blur();
   }
 
   void showColorControl(int elementNumber) {
