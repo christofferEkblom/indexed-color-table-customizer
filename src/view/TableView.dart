@@ -34,6 +34,17 @@ class TableView implements View {
     document.body.children.add(_table);
   }
 
+  void loadTable(List<String> colors) {
+    ElementList allColorControls = querySelectorAll('.jscolor');
+
+    for(int i = 0; i < allColorControls.length; i++) {
+      allColorControls[i].value = colors[i];
+      allColorControls[i].classes.remove('visible');
+      allColorControls[i].classes.add('visible');
+      allColorControls[i].select();
+    }
+  }
+
   void showColorControl(int elementNumber) {
     InputElement colorControl = querySelector('#color-control-' + elementNumber.toString());
     colorControl.classes.add('visible');

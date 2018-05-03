@@ -4,7 +4,7 @@ class TableDataHandler {
   static const String DEFAULT_FILL_VALUE = "000000";
   static const int COLS = 16;
   static const int ROWS = 16;
-
+  
   static const int _COLOR_CHANNELS = 3;
   static const int FILE_SIZE_IN_BYTES = 768;
   static const int _COLOR_CHANNEL_SIZE = 2;
@@ -13,6 +13,7 @@ class TableDataHandler {
   int _cursor = 1;
   Uint8List _arrayBuffer;
   List<String> _data;
+
   int get cursor => _cursor;
 
   TableDataHandler() {
@@ -29,6 +30,16 @@ class TableDataHandler {
     if(cursor > 1) {
       --_cursor;
     }
+  }
+
+  List<String> bytesToHexList(List<int> bytes) {
+    final result = bytes.map((b) => '${b.toRadixString(16).padLeft(2, '0')}');
+    String str = '';
+    String separator = ',';
+    int pos = 0;
+    result.forEach((byte) => str += byte + (++pos % 3 == 0 ? separator : ''));
+    str = str.substring(0, str.length - 1);
+    return str.split(separator);
   }
 
   Uint8List getBytes(List<String> data) {

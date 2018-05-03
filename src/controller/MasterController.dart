@@ -47,6 +47,16 @@ class MasterController {
   }
 
   void _uploadButtonIsClicked(MouseEvent e) {
-    _binaryFileCreator.uploadFile(_toolPanelView.uploadButton);
+    var reader = _binaryFileCreator.uploadFile(_toolPanelView.uploadButton);
+    List<int> bytes;
+
+    reader.onLoad.first.then((_) {
+      bytes = reader.result;
+      _tableView.loadTable(_tableDataHandler.bytesToHexList(bytes));
+    });
+
+    reader.onError.first.then((error) {
+      throw new Exception();
+    });
   }
 }

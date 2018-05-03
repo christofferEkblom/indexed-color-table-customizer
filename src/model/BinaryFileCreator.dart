@@ -14,7 +14,7 @@ class BinaryFileCreator {
     link.click();
   }
 
-  void uploadFile(InputElement input) {
+  FileReader uploadFile(InputElement input) {
     File file = input.files[0];
 
     if(file.size != TableDataHandler.FILE_SIZE_IN_BYTES) {
@@ -23,18 +23,7 @@ class BinaryFileCreator {
 
     Blob blob = file.slice(0, TableDataHandler.FILE_SIZE_IN_BYTES);
     FileReader reader = new FileReader();
-    List<int> bytes;
-
-    reader.onLoad.first.then((_) {
-      bytes = reader.result;
-      print(bytes);
-      throw new UnimplementedError();
-    });
-
-    reader.onError.first.then((error) {
-      throw new Exception();
-    });
-
     reader.readAsArrayBuffer(blob);
+    return reader;
   }
 }
