@@ -49,7 +49,7 @@ class ToolPanelView implements View {
     return _downloadButton;
   }
 
-  ButtonElement _generateUploadButton() {
+  InputElement _generateUploadButton() {
     _uploadButton.id = 'upload';
     _uploadButton.appendText('↑');
     return _uploadButton;
