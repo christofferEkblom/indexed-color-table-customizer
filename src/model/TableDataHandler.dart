@@ -47,7 +47,6 @@ class TableDataHandler {
     _data = data;
     _fillBytes();
     _replaceNullBytes();
-    print(_arrayBuffer);
     return _arrayBuffer;
   }
 
