@@ -21,6 +21,8 @@ class TableView implements View {
 
         if(row == 0 && col == 0) {
           input.classes.add('visible');
+        } else {
+          input.setAttribute('readonly', 'true');
         }
 
         input.value = TableDataHandler.DEFAULT_FILL_VALUE;
@@ -40,6 +42,7 @@ class TableView implements View {
     for(int i = 0; i < allColorControls.length; i++) {
       allColorControls[i].value = colors[i];
       allColorControls[i].classes.add('visible');
+      allColorControls[i].attributes.remove('readonly');
       allColorControls[i].select();
     }
 
@@ -49,11 +52,13 @@ class TableView implements View {
   void showColorControl(int elementNumber) {
     InputElement colorControl = querySelector('#color-control-' + elementNumber.toString());
     colorControl.classes.add('visible');
+    colorControl.attributes.remove('readonly');
   }
 
   void hideColorControl(int elementNumber) {
     InputElement colorControl = querySelector('#color-control-' + (elementNumber + 1).toString());
     colorControl.classes.remove('visible');
+    colorControl.setAttribute('readonly', 'true');
   }
 
   List<String> toStringList() {
