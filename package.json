@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "launcher": "./compile.sh",
-    "server": "http-server"
+    "launcher": "http-server -a localhost -p 8000 | ./compile.sh"
   },
   "repository": {
     "type": "git",
