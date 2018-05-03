@@ -11,6 +11,7 @@ class TableDataHandler {
   static const int _HEX_BASE = 16;
 
   int _cursor = 1;
+  int _pos = 0;
   Uint8List _arrayBuffer;
   List<String> _data;
 
@@ -46,6 +47,7 @@ class TableDataHandler {
     _data = data;
     _fillBytes();
     _replaceNullBytes();
+    print(_arrayBuffer);
     return _arrayBuffer;
   }
 
@@ -77,22 +79,19 @@ class TableDataHandler {
 
   void _fillBytes() {
     List<List<int>> bytes = _hexArrayToBytes(_data);
-    int pos = 0;
 
     for(int i = 0; i < bytes.length; i++) {
       for(int j = 0; j < 3; j++) {
-        _arrayBuffer[pos++] = bytes[i][j];
+        _arrayBuffer[_pos++] = bytes[i][j];
       }
     }
   }
 
   void _replaceNullBytes() {
-    int pos = _cursor * _COLOR_CHANNELS;
-
-    while(pos < FILE_SIZE_IN_BYTES) {
-      _arrayBuffer[pos++] = _arrayBuffer[0];
-      _arrayBuffer[pos++] = _arrayBuffer[1];
-      _arrayBuffer[pos++] = _arrayBuffer[2];
+    while(_pos < FILE_SIZE_IN_BYTES) {
+      _arrayBuffer[_pos++] = _arrayBuffer[0];
+      _arrayBuffer[_pos++] = _arrayBuffer[1];
+      _arrayBuffer[_pos++] = _arrayBuffer[2];
     }
   }
 }
