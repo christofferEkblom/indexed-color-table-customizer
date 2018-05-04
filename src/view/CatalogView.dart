@@ -29,8 +29,12 @@ class CatalogView implements View {
     document.body.children.add(_catalog);
   }
 
-  void close() {
-    _catalog.remove();
+  void show() {
+    _catalog.style.display = 'block';
+  }
+
+  void hide() {
+    _catalog.style.display = 'none';
   }
 
   void getData(Map data) {

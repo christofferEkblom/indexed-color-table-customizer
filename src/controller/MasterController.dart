@@ -25,6 +25,7 @@ class MasterController {
   }
   
   void run() {
+    _renderCatalog();
     _tableView.generate();
   	_toolPanelView.generate();
   	_handleToolPanelEvents();
@@ -57,20 +58,11 @@ class MasterController {
   }
 
   void _catalogButtonIsClicked(MouseEvent e) {
-    if(_catalogView == null) {
-      _catalogView = new CatalogView();
-      _catalogView.closeButton.onClick.listen(_catalogCloseButtonIsClicked);
-
-      _sampleDataHandler.getJsonFile().then((data) {
-        _catalogView.getData(data);
-        _catalogView.generate();
-      });
-    }
+    _catalogView.show();
   }
 
   void _catalogCloseButtonIsClicked(MouseEvent e) {
-    _catalogView.close();
-    _catalogView = null;
+    _catalogView.hide();
   }
 
   void _updateTableOnFocus(Event e) {
@@ -95,6 +87,17 @@ class MasterController {
 
     reader.onError.first.then((error) {
       throw new Exception();
+    });
+  }
+
+  void _renderCatalog() {
+    _catalogView = new CatalogView();
+    _catalogView.closeButton.onClick.listen(_catalogCloseButtonIsClicked);
+
+    _sampleDataHandler.getJsonFile().then((data) {
+      _catalogView.getData(data);
+      _catalogView.generate();
+      _catalogView.hide();
     });
   }
 
