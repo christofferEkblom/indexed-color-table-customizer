@@ -28,10 +28,10 @@ class MasterController {
     _renderCatalog();
     _tableView.generate();
     _toolPanelView.generate();
-    _handleToolPanelEvents();
+    _handleEvents();
   }
 
-  void _handleToolPanelEvents() {
+  void _handleEvents() {
     window.onFocus.listen(_setFocus);
     window.onBlur.listen(_unsetFocus);
 
