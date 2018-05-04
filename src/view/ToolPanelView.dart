@@ -7,6 +7,7 @@ class ToolPanelView implements View {
   ButtonElement _minusButton;
   ButtonElement _downloadButton;
   InputElement _uploadButton;
+  LabelElement _uploadButtonLabel;
 
   ButtonElement get plusButton => _plusButton;
   ButtonElement get minusButton => _minusButton;
@@ -21,13 +22,15 @@ class ToolPanelView implements View {
     _downloadButton = new ButtonElement();
     _uploadButton = new InputElement();
     _uploadButton.type = 'file';
+    _uploadButtonLabel = new LabelElement();
   }
 
   void generate() {
     _toolPanel.append(_generatePlusButton());
     _toolPanel.append(_generateMinusButton());
     _toolPanel.append(_generateDownloadButton());
-    _toolPanel.append(_generateUploadButton());
+    _toolPanel.append(_generateUploadButtonLabel());
+    _uploadButtonLabel.append(_generateUploadButton());
     document.body.children.add(_toolPanel);
   }
 
@@ -53,5 +56,12 @@ class ToolPanelView implements View {
     _uploadButton.id = 'upload';
     _uploadButton.appendText('↑');
     return _uploadButton;
+  }
+
+  LabelElement _generateUploadButtonLabel() {
+    SpanElement span = new SpanElement();
+    span.appendText('Chose a file or drag or drag it here');
+    _uploadButtonLabel.append(span);
+    return _uploadButtonLabel;
   }
 }
