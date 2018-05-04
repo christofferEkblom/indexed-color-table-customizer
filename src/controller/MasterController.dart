@@ -40,6 +40,8 @@ class MasterController {
     _toolPanelView.downloadButton.onClick.listen(_downloadButtonIsClicked);
     _toolPanelView.catalogButton.onClick.listen(_catalogButtonIsClicked);
     _toolPanelView.uploadButton.onChange.listen(_updateTableOnFocus);
+
+    _catalogView.closeButton.onClick.listen(_catalogCloseButtonIsClicked);
   }
 
   void _plusButtonIsClicked(MouseEvent e) {
@@ -92,7 +94,6 @@ class MasterController {
 
   void _renderCatalog() {
     _catalogView = new CatalogView();
-    _catalogView.closeButton.onClick.listen(_catalogCloseButtonIsClicked);
 
     _sampleDataHandler.getJsonFile().then((data) {
       _catalogView.getData(data);
