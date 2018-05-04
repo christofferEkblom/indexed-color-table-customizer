@@ -11,7 +11,7 @@ class TableDataHandler {
   static const int _HEX_BASE = 16;
 
   int _cursor = 1;
-  int _pos = 0;
+  int _pos;
   Uint8List _arrayBuffer;
   List<String> _data;
 
@@ -49,6 +49,7 @@ class TableDataHandler {
 
   Uint8List getBytes(List<String> data) {
     _data = data;
+    _pos = 0;
     _fillBytes();
     _replaceNullBytes();
     return _arrayBuffer;
