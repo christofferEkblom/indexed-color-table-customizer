@@ -1,14 +1,18 @@
 import 'dart:html';
 import '../model/TableDataHandler.dart';
 import '../model/BinaryFileCreator.dart';
+import '../model/SampleDataHandler.dart';
 import '../view/TableView.dart';
 import '../view/ToolPanelView.dart';
+import '../view/CatalogView.dart';
 
 class MasterController {
   TableDataHandler _tableDataHandler;
   BinaryFileCreator _binaryFileCreator;
+  SampleDataHandler _sampleDataHandler;
   TableView _tableView;
   ToolPanelView _toolPanelView;
+  CatalogView _catalogView;
 
   bool _focused = true;
 
@@ -17,6 +21,7 @@ class MasterController {
     _toolPanelView = new ToolPanelView();
     _tableDataHandler = new TableDataHandler();
     _binaryFileCreator = new BinaryFileCreator();
+    _sampleDataHandler = new SampleDataHandler();
   }
   
   void run() {
@@ -32,6 +37,7 @@ class MasterController {
     _toolPanelView.plusButton.onClick.listen(_plusButtonIsClicked);
     _toolPanelView.minusButton.onClick.listen(_minusButtonIsClicked);
     _toolPanelView.downloadButton.onClick.listen(_downloadButtonIsClicked);
+    _toolPanelView.catalogButton.onClick.listen(_catalogButtonIsClicked);
     _toolPanelView.uploadButton.onChange.listen(_updateTableOnFocus);
   }
 
@@ -48,6 +54,23 @@ class MasterController {
   void _downloadButtonIsClicked(MouseEvent e) {
     var bytes = _tableDataHandler.getBytes(_tableView.toStringList());
     _binaryFileCreator.downloadFile(bytes);
+  }
+
+  void _catalogButtonIsClicked(MouseEvent e) {
+    if(_catalogView == null) {
+      _catalogView = new CatalogView();
+      _catalogView.closeButton.onClick.listen(_catalogCloseButtonIsClicked);
+
+      _sampleDataHandler.getJsonFile().then((data) {
+        _catalogView.getData(data);
+        _catalogView.generate();
+      });
+    }
+  }
+
+  void _catalogCloseButtonIsClicked(MouseEvent e) {
+    _catalogView.close();
+    _catalogView = null;
   }
 
   void _updateTableOnFocus(Event e) {
