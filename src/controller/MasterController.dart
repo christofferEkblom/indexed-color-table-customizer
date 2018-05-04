@@ -18,10 +18,9 @@ class MasterController {
   }
   
   void run() {
+    _tableView.generate();
   	_toolPanelView.generate();
   	_handleToolPanelEvents();
-
-  	_tableView.generate();
   }
 
   void _handleToolPanelEvents() {
