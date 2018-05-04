@@ -27,8 +27,8 @@ class MasterController {
   void run() {
     _renderCatalog();
     _tableView.generate();
-  	_toolPanelView.generate();
-  	_handleToolPanelEvents();
+    _toolPanelView.generate();
+    _handleToolPanelEvents();
   }
 
   void _handleToolPanelEvents() {
