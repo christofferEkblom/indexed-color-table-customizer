@@ -10,3 +10,40 @@
   filter: blur(0);
   pointer-events: initial;
 }
+
+#indexed-color-table-customizer {
+  text-align: center;
+}
+
+#indexed-color-table-customizer label {
+  display: block;
+  width: 250px;
+  height: 100px;
+  border: 1px dashed #666;
+  background: #eee;
+  margin: 10px auto;
+}
+
+#indexed-color-table-customizer label span {
+  position: relative;
+  top: 20px;
+}
+
+#indexed-color-table-customizer input[type='file'] {
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#indexed-color-table-customizer table {
+  margin: 10px auto;
+  border: 1px solid #000;
+}
+
+#indexed-color-table-customizer table .jscolor {
+  width: 4vw;
+  border: 0;
+  text-align: center;
+  margin: 1px;
+  text-transform: lowercase;
+}
