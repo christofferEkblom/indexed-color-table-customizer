@@ -13,6 +13,7 @@ class MasterController {
   TableView _tableView;
   ToolPanelView _toolPanelView;
   CatalogView _catalogView;
+  Map _catalogData;
 
   bool _focused = true;
 
@@ -96,9 +97,25 @@ class MasterController {
     _catalogView = new CatalogView();
 
     _sampleDataHandler.getJsonFile().then((data) {
+      _catalogData = data;
       _catalogView.getData(data);
       _catalogView.generate();
       _catalogView.hide();
+      _handleCatalogEvents();
+    });
+  }
+
+  void _handleCatalogEvents() {
+    ElementList<LIElement> listItems = document.querySelectorAll('#catalog ul li');
+
+    listItems.forEach((li) {
+      _addCatalogClickHandler(li);
+    });
+  }
+
+  void _addCatalogClickHandler(Element element) {
+    element.onClick.listen((_) {
+      _tableView.loadTable(_catalogData[element.text]);
     });
   }
 
