@@ -116,6 +116,7 @@ class MasterController {
   void _addCatalogClickHandler(Element element) {
     element.onClick.listen((_) {
       _tableView.loadTable(_catalogData[element.text]);
+      _tableDataHandler.setCursorAtTheEnd();
     });
   }
 
