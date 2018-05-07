@@ -34,7 +34,8 @@ class ToolPanelView implements View {
   ButtonElement _generatePlusButton() {
     _plusButton.id = 'add';
     _plusButton.classes.add('btn');
-    _plusButton.classes.add('btn-primary');
+    _plusButton.classes.add('btn-dark');
+    _plusButton.classes.add('btn-square');
     _plusButton.appendText('+');
     return _plusButton;
   }
@@ -42,7 +43,8 @@ class ToolPanelView implements View {
    ButtonElement _generateMinusButton() {
     _minusButton.id = 'remove';
     _minusButton.classes.add('btn');
-    _minusButton.classes.add('btn-primary');
+    _minusButton.classes.add('btn-dark');
+    _minusButton.classes.add('btn-square');
     _minusButton.appendText('-');
     return _minusButton;
   }
@@ -50,7 +52,8 @@ class ToolPanelView implements View {
   ButtonElement _generateDownloadButton() {
     _downloadButton.id = 'download';
     _downloadButton.classes.add('btn');
-    _downloadButton.classes.add('btn-primary');
+    _downloadButton.classes.add('btn-dark');
+    _downloadButton.classes.add('btn-square');
     _downloadButton.appendText('↓');
     return _downloadButton;
   }
@@ -58,7 +61,8 @@ class ToolPanelView implements View {
   ButtonElement _generatecatalogButton() {
     _catalogButton.id = 'browse';
     _catalogButton.classes.add('btn');
-    _catalogButton.classes.add('btn-primary');
+    _catalogButton.classes.add('btn-dark');
+    _catalogButton.classes.add('btn-square');
     _catalogButton.appendText('Catalog');
     return _catalogButton;
   }

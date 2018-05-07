@@ -7,6 +7,7 @@ class TableView implements View {
 
   TableView() {
     _table = new TableElement();
+    _table.classes.add('table');
   }
 
   void generate() {

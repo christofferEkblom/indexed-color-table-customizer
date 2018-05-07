@@ -1,14 +1,21 @@
 #indexed-color-table-customizer table .jscolor {
   opacity: 0.1;
-  filter: blur(1px);
-  z-index: -1;
   pointer-events: none;
+  width: 100%;
 }
 
 #indexed-color-table-customizer table .jscolor.visible {
   opacity: 1;
-  filter: blur(0);
   pointer-events: initial;
+}
+
+#indexed-color-table-customizer #tool-panel {
+  display: block;
+  background: #343a40;
+}
+
+#indexed-color-table-customizer .btn-square {
+  border-radius: 0;
 }
 
 #indexed-color-table-customizer {
@@ -35,15 +42,16 @@
   height: 100%;
 }
 
-#indexed-color-table-customizer table {
-  margin: 10px auto;
-  border: 1px solid #000;
+#indexed-color-table-customizer table td {
+  padding: 0px;
 }
 
 #indexed-color-table-customizer table .jscolor {
-  width: 4vw;
   border: 0;
   text-align: center;
-  margin: 1px;
   text-transform: lowercase;
+}
+
+.table td, .table th {
+  border: 0;
 }
