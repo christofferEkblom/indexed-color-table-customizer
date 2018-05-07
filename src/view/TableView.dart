@@ -18,14 +18,8 @@ class TableView implements View {
         TableCellElement tableCell = tableRow.addCell();
         InputElement input = new InputElement();
         input.classes.add('jscolor');
-        input.id = 'color-control-' + id.toString();
-
-        if(row == 0 && col == 0) {
-          input.classes.add('visible');
-        } else {
-          input.setAttribute('readonly', 'true');
-        }
-
+        input.id = 'color-control-' + id.toString(); 
+        input.setAttribute('readonly', 'true');
         input.value = TableDataHandler.DEFAULT_FILL_VALUE;
         tableCell.append(input);
         tableRow.append(tableCell);

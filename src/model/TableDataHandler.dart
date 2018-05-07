@@ -10,7 +10,7 @@ class TableDataHandler {
   static const int _COLOR_CHANNEL_SIZE = 2;
   static const int _HEX_BASE = 16;
 
-  int _cursor = 1;
+  int _cursor = 0;
   int _pos;
   Uint8List _arrayBuffer;
   List<String> _data;
@@ -28,7 +28,7 @@ class TableDataHandler {
   }
 
   void decreaseCursor() {
-    if(cursor > 1) {
+    if(cursor > 0) {
       --_cursor;
     }
   }
