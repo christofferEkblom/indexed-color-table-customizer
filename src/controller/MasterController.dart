@@ -4,6 +4,7 @@ import '../model/BinaryFileCreator.dart';
 import '../model/SampleDataHandler.dart';
 import '../view/TableView.dart';
 import '../view/ToolPanelView.dart';
+import '../view/FileUploadView.dart';
 import '../view/CatalogView.dart';
 
 class MasterController {
@@ -12,6 +13,7 @@ class MasterController {
   SampleDataHandler _sampleDataHandler;
   TableView _tableView;
   ToolPanelView _toolPanelView;
+  FileUploadView _fileUploadView;
   CatalogView _catalogView;
   Map _catalogData;
 
@@ -20,6 +22,7 @@ class MasterController {
   MasterController() {
     _tableView = new TableView();
     _toolPanelView = new ToolPanelView();
+    _fileUploadView = new FileUploadView();
     _tableDataHandler = new TableDataHandler();
     _binaryFileCreator = new BinaryFileCreator();
     _sampleDataHandler = new SampleDataHandler();
@@ -27,8 +30,9 @@ class MasterController {
   
   void run() {
     _renderCatalog();
-    _tableView.generate();
     _toolPanelView.generate();
+    _tableView.generate();
+    _fileUploadView.generate();
     _handleEvents();
   }
 
@@ -40,7 +44,7 @@ class MasterController {
     _toolPanelView.minusButton.onClick.listen(_minusButtonIsClicked);
     _toolPanelView.downloadButton.onClick.listen(_downloadButtonIsClicked);
     _toolPanelView.catalogButton.onClick.listen(_catalogButtonIsClicked);
-    _toolPanelView.uploadButton.onChange.listen(_updateTableOnFocus);
+    _fileUploadView.uploadButton.onChange.listen(_updateTableOnFocus);
 
     _catalogView.closeButton.onClick.listen(_catalogCloseButtonIsClicked);
   }
@@ -79,7 +83,7 @@ class MasterController {
   }
 
   void _updateTable() {
-    var reader = _binaryFileCreator.uploadFile(_toolPanelView.uploadButton);
+    var reader = _binaryFileCreator.uploadFile(_fileUploadView.uploadButton);
     List<int> bytes;
 
     reader.onLoad.first.then((_) {
